@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html>
+<head>
+    {{! Document Settings }}
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+
+    {{! Page Meta }}
+    <title>{{meta_title}}</title>
+    <meta name="description" content="{{meta_description}}" />
+
+    <meta name="HandheldFriendly" content="True" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+    {{! Styles'n'Scripts }}
+    <link rel="stylesheet" type="text/css" href="{{asset "css/screen.css"}}" />
+
+    {{! Ghost outputs important style and meta data with this tag }}
+    {{ghost_head}}
+</head>
+<body class="{{body_class}}">
+
+<div id="menu">
+<nav role="navigation" class="site-navigation main-navigation">
+    <h1 class="assistive-text">Menu</h1>
+
+    <div class="menu-main-container">
+    <ul id="menu-main" class="menu">
+    <li><a href="{{@blog.url}}">Home</a></li>
+    <li><a href="#">Link One</a>
+        <ul class="sub-menu">
+            <li><a href="#">Link One Alpha</a></li>
+            <li><a href="#">Link One Bravo</a>
+            <ul class="sub-menu">
+                <li><a href="#">Link One Charlie</a></li>
+            </ul>
+            </li>
+        </ul>
+    </li>
+    <li><a href="#">Link Two</a></li>
+    <li><a href="#">Link Three</a></li>
+    </ul>
+    </div>
+</nav><!-- .site-navigation .main-navigation -->
+</div><!-- #menu -->
+
+<header class="site-head" {{#if @blog.cover}}style="background-image: url({{@blog.cover}})"{{/if}}>
+    <div class="vertical">
+        <div class="site-head-content inner">
+            <a class="blog-logo" href="{{@blog.url}}">
+            {{#if @blog.logo}}
+                <img src="{{@blog.logo}}" alt="Blog Logo" />
+            {{/if}}
+            <h1 class="blog-title">{{@blog.title}}</h1>
+            </a>
+            <h2 class="blog-description">{{@blog.description}}</h2>
+        </div>
+    </div>
+</header>
+
+    {{! Everything else gets inserted here }}
+    {{{body}}}
+
+    <footer class="site-footer">
+        <a class="subscribe icon-feed" href="{{@blog.url}}/rss/"><span class="tooltip">Subscribe!</span></a>
+        <div class="inner">
+             <section class="copyright">&copy; {{date format="YYYY"}} <a href="{{@blog.url}}/">{{@blog.title}}</a> &bull; Landscape Theme by <a href="http://blankthemes.com">Blank Themes</a></section>
+             <section class="poweredby">Proudly published with <a class="icon-ghost" href="https://ghost.org">Ghost</a></section>
+        </div>
+    </footer>
+
+    {{! Ghost outputs important scripts and data with this tag }}
+    {{ghost_foot}}
+
+    {{! The main JavaScript file for Landscape }}
+    <script type="text/javascript" src="{{asset "js/jquery.fitvids.js"}}"></script>
+    <script type="text/javascript" src="{{asset "js/index.js"}}"></script>
+    <script type="text/javascript" src="{{asset "js/small-menu.js"}}"></script>
+
+</body>
+</html>
